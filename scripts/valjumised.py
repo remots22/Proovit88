@@ -1,10 +1,10 @@
 import csv
 import os
 
-gtfsk = "gtfs"
+gtfsk = "../data/gtfs"
 alg = "822" #zoo
 peatus2 = "1769" #toompark
-valjund = "zoo_toompark_valjumised.csv"
+valjund_file = "../output/zoo_toompark_valjumised.csv"
 
 
 cal = os.path.join(gtfsk, "calendar.txt")
@@ -100,7 +100,7 @@ for reisi_id, detailid in soidu_peatuse_andmed.items():
 valjundandmed.sort(key=lambda x: x[1])
 
 
-with open(valjund, mode='w', newline='', encoding='utf-8') as valjundfail:
+with open(valjund_file, mode='w', newline='', encoding='utf-8') as valjundfail:
     kirjutaja = csv.writer(valjundfail)
     kirjutaja.writerow(['liin', 'zoo_valjumine', 'toompark_saabumine'])
     for rea_andmed in valjundandmed:

@@ -7,7 +7,20 @@ import os
 import threading
 import sys
 import select
-urlid = {"https://transport.tallinn.ee/siri-stop-departures.php?stopid=822": {"kalapulk": "koik822.csv", "toodeldud_andmed": "822_norm.csv"}, "https://transport.tallinn.ee/siri-stop-departures.php?stopid=1769": {"kalapulk": "koik1769.csv", "toodeldud_andmed": "1769_norm.csv"}}
+
+toored = "../data/raw"
+töödeldud = "../data/processed"
+
+urlid = {
+    "https://transport.tallinn.ee/siri-stop-departures.php?stopid=822": {
+        "kalapulk": os.path.join(toored, "koik822.csv"),
+        "toodeldud_andmed": os.path.join(töödeldud, "822_norm.csv")
+    },
+    "https://transport.tallinn.ee/siri-stop-departures.php?stopid=1769": {
+        "kalapulk": os.path.join(toored, "koik1769.csv"),
+        "toodeldud_andmed": os.path.join(töödeldud, "1769_norm.csv")
+    }
+}
 liinid = ["8", "21", "21B", "41", "41B"]
 töötab = True
 def kraabi(): # kysib endpointist bussipeatuste kohta andmed (Transport,RouteNum,ExpectedTimeInSeconds,ScheduleTimeInSeconds) ja kirjutab faili
