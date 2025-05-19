@@ -1,6 +1,7 @@
 # Proovit88
 Otsustasin esmalt laadida alla Eesti GTFS andmestiku ning seda uurida. Kavatsen esmalt teha lihtsama graafiku GTFS andmete põhjal. Andmestik on saadaval: "http://www.peatus.ee/gtfs/" ning juhend: "https://developers.google.com/transit/gtfs/reference/",
 
+
 Leidsin stops.txt failist vastavad peatused:
 | stop_id | stop_code | stop_name | stop_lat    | stop_lon    | zone_id | alias | stop_area | stop_desc | lest_x     | lest_y    | zone_name | authority   |
 |---------|-----------|-----------|-------------|-------------|---------|-------|-----------|-----------|------------|-----------|-----------|-------------|
@@ -9,15 +10,8 @@ Leidsin stops.txt failist vastavad peatused:
 
 Vastavad peatused on kindlaks tehtud koordinatide järgi - veendusin, et tegemist on õige suunaga peatustega.
 
-routes.txt põhjal sõidavad Zoo ja Toompargi vahel järgmised liinid:
-| route_id | agency_id | route_short_name | route_long_name              | route_type | route_color | competent_authority | route_desc |
-|----------|-----------|------------------|------------------------------|------------|-------------|---------------------|------------|
-| xxxx     | 56        | 21               | Balti jaam - Landi           | 3          | de2c42      | Tallinna TA         |            |
-| xxxx     | 56        | 21B              | Balti jaam - Kakumäe         | 3          | de2c42      | Tallinna TA         |            |
-| xxxx     | 56        | 41               | Balti jaam - Landi           | 3          | de2c42      | Tallinna TA         |            |
-| xxxx     | 56        | 41B              | Balti jaam - Kakumäe         | 3          | de2c42      | Tallinna TA         |            |
-| xxxx     | 56        | 8                | Väike-Õismäe - Äigrumäe      | 3          | de2c42      | Tallinna TA         |            |
-| xxxx     | 56        | 92               | ÖÖ Balti jaam - Väike-Õismäe | 3          | de2c42      | Tallinna TA         |            |
+
+
 
 Teades õigeid stop_id väärtuseid, võtsin GTFS andmetest välja buss nr 8 kohta käiva graafiku (zoo_toompark_valjumised.csv data -> raw kaustas).
 Järgnev graafik tõlgendab saabumised ja väljumised TT:MM formaati (tund-minut).
@@ -32,7 +26,36 @@ Järgnev graafik tõlgendab saabumised ja väljumised TT:MM formaati (tund-minut
 
 Need ajad kattuvad aadressil transport.tallinn.ee saadaval oleva graafikuga:
 ![Joonis 1. Kuvatõmmis portaalist transport.tallinn.ee. Liini 8 (Zoo) sõiduplaan](tltgraafikzoo.png)
+
 **Joonis 1.** Kuvatõmmis portaalist transport.tallinn.ee. Liini 8 (Zoo) sõiduplaan.
+
+Uurisin Postman rakenduse abil https://gis.ee/tallinn/ kaardirakendust - sealt on võimalik leida reaalajas andmeid Tallinna busside ja trammide kohta. 
+Leidsin endpointi kujul "https://transport.tallinn.ee/siri-stop-departures.php?stopid=xxxx", mille abil on võimalik requestida arvatavat saabumisaega ning tegelikku saabumisaega.
+
+
+Endpoint väljastab andmeid kujul:
+
+Transport,RouteNum,ExpectedTimeInSeconds,ScheduleTimeInSeconds,65472,version20201024
+stop,822
+bus,25,65688,65484,Reisisadama D-terminal,216,Z
+bus,8,65704,65694,Äigrumäe,232,Z
+bus,21,65776,65460,Balti jaam,304,Z
+bus,42,65818,65796,Priisle,346,Z
+bus,26,65900,65898,Paljassaare,428,Z
+
+Kogusin andmeid kolme päeva väljumiste kohta - eelkõige kl 8 - kl 9 (hilinemised.py). Kogusin andmeid 15.05.2025, 16.05.2025 ja 19.05.2025 - neljapäev, reede, esmaspäev. Et andmeid hilinemise tõenäosuse arvutamiseks on liiga vähe (aega ülesande täitmiseks ka : D), otsustasin sel korral kasutada keskmise hilinemise arvutamiseks andmeid ka teiste liinide kohta, mis sõidavad sarnast teed pidi ning läbivad Zoo ja Toompark peatuseid.
+
+routes.txt põhjal sõidavad Zoo ja Toompargi vahel järgmised liinid:
+| route_id | agency_id | route_short_name | route_long_name              | route_type | route_color | competent_authority | route_desc |
+|----------|-----------|------------------|------------------------------|------------|-------------|---------------------|------------|
+| xxxx     | 56        | 21               | Balti jaam - Landi           | 3          | de2c42      | Tallinna TA         |            |
+| xxxx     | 56        | 21B              | Balti jaam - Kakumäe         | 3          | de2c42      | Tallinna TA         |            |
+| xxxx     | 56        | 41               | Balti jaam - Landi           | 3          | de2c42      | Tallinna TA         |            |
+| xxxx     | 56        | 41B              | Balti jaam - Kakumäe         | 3          | de2c42      | Tallinna TA         |            |
+| xxxx     | 56        | 8                | Väike-Õismäe - Äigrumäe      | 3          | de2c42      | Tallinna TA         |            |
+| xxxx     | 56        | 92               | ÖÖ Balti jaam - Väike-Õismäe | 3          | de2c42      | Tallinna TA         |            |
+
+
 
 # Allikad
 Ühistranspordiregistri avaandmed
