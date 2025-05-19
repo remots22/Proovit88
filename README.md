@@ -53,7 +53,7 @@ bus,21,65776,65460,Balti jaam,304,Z
 bus,42,65818,65796,Priisle,346,Z
 bus,26,65900,65898,Paljassaare,428,Z
 
-Kogusin andmeid kolme päeva väljumiste kohta - eelkõige kl 8 - kl 9 (hilinemised.py). Kogusin andmeid 15.05.2025, 16.05.2025 ja 19.05.2025 - neljapäev, reede, esmaspäev.
+Kogusin andmeid kolme päeva väljumiste kohta - eelkõige kl 8 - kl 9 (hilinemised.py). Kogusin andmeid 15.05.2025, 16.05.2025 ja 19.05.2025 - neljapäev, reede, esmaspäev. Et andmeid hilinemise tõenäosuse arvutamiseks on liiga vähe (aega ülesande täitmiseks ka : D), otsustasin sel korral kasutada keskmise hilinemise arvutamiseks andmeid ka teiste liinide kohta, mis sõidavad sarnast teed pidi ning läbivad Zoo ja Toompark peatuseid.
 
 # Allikad
 Ühistranspordiregistri avaandmed
