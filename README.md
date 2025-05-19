@@ -11,16 +11,6 @@ Leidsin stops.txt failist vastavad peatused:
 Vastavad peatused on kindlaks tehtud koordinatide järgi - veendusin, et tegemist on õige suunaga peatustega.
 
 
-routes.txt põhjal sõidavad Zoo ja Toompargi vahel järgmised liinid:
-| route_id | agency_id | route_short_name | route_long_name              | route_type | route_color | competent_authority | route_desc |
-|----------|-----------|------------------|------------------------------|------------|-------------|---------------------|------------|
-| xxxx     | 56        | 21               | Balti jaam - Landi           | 3          | de2c42      | Tallinna TA         |            |
-| xxxx     | 56        | 21B              | Balti jaam - Kakumäe         | 3          | de2c42      | Tallinna TA         |            |
-| xxxx     | 56        | 41               | Balti jaam - Landi           | 3          | de2c42      | Tallinna TA         |            |
-| xxxx     | 56        | 41B              | Balti jaam - Kakumäe         | 3          | de2c42      | Tallinna TA         |            |
-| xxxx     | 56        | 8                | Väike-Õismäe - Äigrumäe      | 3          | de2c42      | Tallinna TA         |            |
-| xxxx     | 56        | 92               | ÖÖ Balti jaam - Väike-Õismäe | 3          | de2c42      | Tallinna TA         |            |
-
 
 
 Teades õigeid stop_id väärtuseid, võtsin GTFS andmetest välja buss nr 8 kohta käiva graafiku (zoo_toompark_valjumised.csv data -> raw kaustas).
@@ -54,6 +44,18 @@ bus,42,65818,65796,Priisle,346,Z
 bus,26,65900,65898,Paljassaare,428,Z
 
 Kogusin andmeid kolme päeva väljumiste kohta - eelkõige kl 8 - kl 9 (hilinemised.py). Kogusin andmeid 15.05.2025, 16.05.2025 ja 19.05.2025 - neljapäev, reede, esmaspäev. Et andmeid hilinemise tõenäosuse arvutamiseks on liiga vähe (aega ülesande täitmiseks ka : D), otsustasin sel korral kasutada keskmise hilinemise arvutamiseks andmeid ka teiste liinide kohta, mis sõidavad sarnast teed pidi ning läbivad Zoo ja Toompark peatuseid.
+
+routes.txt põhjal sõidavad Zoo ja Toompargi vahel järgmised liinid:
+| route_id | agency_id | route_short_name | route_long_name              | route_type | route_color | competent_authority | route_desc |
+|----------|-----------|------------------|------------------------------|------------|-------------|---------------------|------------|
+| xxxx     | 56        | 21               | Balti jaam - Landi           | 3          | de2c42      | Tallinna TA         |            |
+| xxxx     | 56        | 21B              | Balti jaam - Kakumäe         | 3          | de2c42      | Tallinna TA         |            |
+| xxxx     | 56        | 41               | Balti jaam - Landi           | 3          | de2c42      | Tallinna TA         |            |
+| xxxx     | 56        | 41B              | Balti jaam - Kakumäe         | 3          | de2c42      | Tallinna TA         |            |
+| xxxx     | 56        | 8                | Väike-Õismäe - Äigrumäe      | 3          | de2c42      | Tallinna TA         |            |
+| xxxx     | 56        | 92               | ÖÖ Balti jaam - Väike-Õismäe | 3          | de2c42      | Tallinna TA         |            |
+
+
 
 # Allikad
 Ühistranspordiregistri avaandmed
