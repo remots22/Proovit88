@@ -17,6 +17,7 @@ routes.txt põhjal sõidavad Zoo ja Toompargi vahel järgmised liinid:
 | xxxx     | 56        | 8                | Väike-Õismäe - Äigrumäe      | 3          | de2c42      | Tallinna TA         |            |
 | xxxx     | 56        | 92               | ÖÖ Balti jaam - Väike-Õismäe | 3          | de2c42      | Tallinna TA         |            |
 
+Selle põhjal
 # Allikad
 Ühistranspordiregistri avaandmed
 Ajaline kaetus: 28.05.2018; Uuenemissagedus: iga päev  
