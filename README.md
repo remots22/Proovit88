@@ -1,4 +1,5 @@
 # RMK Data Team Internship 2025
+<a href="#english-version"><button>English version</button></a>
 
 Interaktiivsed graafikud on saadaval Streamliti rakenduses:  
 [https://rmkdatateaminternship2025-idc2zimyqvkshe9jabymgf.streamlit.app](https://rmkdatateaminternship2025-idc2zimyqvkshe9jabymgf.streamlit.app)
@@ -95,6 +96,103 @@ Arvestades reisi keskmist kestust ning standardhälvet, jooksutasin Monte Carlo 
 ![Joonis 5. Rita hilinemise tõenäosus](visualization-5.png)
 **Joonis 5.** Rita hilinemise tõenäosus
 
+
+---
+
+## English version {#english-version}
+
+Interactive charts are available in the Streamlit app:  
+https://rmkdatateaminternship2025-idc2zimyqvkshe9jabymgf.streamlit.app
+
+---
+
+## Final result
+
+![Monte Carlo simulation](visualization-5.png)  
+*Figure. Probability of delay*
+
+---
+
+## Summary
+
+1. I downloaded the GTFS data.  
+2. I found the correct stops.  
+3. I calculated trip durations at different times of day.  
+4. I scraped actual bus arrival data from the endpoint for three days.  
+5. I collected delay data, analyzed it, and visualized delay dynamics.  
+6. I made charts of delays and ran a Monte Carlo simulation.
+
+---
+
+I first downloaded the Estonian GTFS dataset and explored it. The dataset is available at:  
+http://www.peatus.ee/gtfs/  
+Guide: https://developers.google.com/transit/gtfs/reference/
+
+From **stops.txt**, I found the matching stops:
+
+| stop_id | stop_code | stop_name | stop_lat    | stop_lon    | zone_id | alias | stop_area | stop_desc | lest_x     | lest_y    | zone_name | authority   |
+|---------|-----------|-----------|-------------|-------------|---------|-------|-----------|-----------|------------|-----------|-----------|-------------|
+| 822     | 00702-1   | Zoo       | 59.42621424 | 24.65888954 | 822     |       | Haabersti |           | 6587778.16 | 537400.97 | Harju1    | Tallinna TA |
+| 1769    | 10902-1   | Toompark  | 59.43682472 | 24.73332737 | 1769    |       | Kesklinn  |           | 6589004.00 | 541613.25 | Harju1    | Tallinna TA |
+
+I confirmed by coordinates that these are the correct stops.
+
+Knowing the stop IDs, I extracted the schedule for bus no. 8 (`zoo_toompark_valjumised.csv`). Here are arrivals and departures in HH:MM:
+
+|    | 1     | 2     | … | 88    | 89    |
+|----|-------|-------|---|-------|-------|
+| **zoo**      | 05:08 | 05:23 | … | 23:06 | 23:26 |
+| **toompark** | 05:17 | 05:32 | … | 23:00 | 23:35 |
+| **duration** | 9 min | 9 min  | … | 11 min| 9 min |
+
+These match the schedule on transport.tallinn.ee:
+
+![Figure 1. Line 8 (Zoo) schedule](tltgraafikzoo.png)
+
+I used Postman to fetch real-time data from:
+
+```
+https://transport.tallinn.ee/siri-stop-departures.php?stopid=XXXX
+```
+
+It returns scheduled and actual times:
+
+```
+Transport,RouteNum,ExpectedTimeInSeconds,ScheduleTimeInSeconds...
+stop,822
+bus,25,65688,65484,...
+```
+
+I collected data for three days (15 May 2025, 16 May 2025, 19 May 2025) between 8 AM and 9 AM using `hilinemised.py`. To boost sample size, I added lines that run between Zoo and Toompark:
+
+| route_short_name | route_long_name                    |
+|------------------|------------------------------------|
+| 21               | Balti jaam – Landi                 |
+| 21B              | Balti jaam – Kakumäe               |
+| 41               | Balti jaam – Landi                 |
+| 41B              | Balti jaam – Kakumäe               |
+| 8                | Väike-Õismäe – Äigrumäe            |
+| 92               | Night Balti jaam – Väike-Õismäe    |
+
+I visualized departure delays:
+
+![Figure 2. Delays at Zoo stop](822.png)  
+![Figure 3. Delays at Toompark stop](1769.png)
+
+Then I visualized trip durations:
+
+![Figure 4. Actual trip durations](visualization-6.png)
+
+- **Average**: 834 s  
+- **Std dev**: 153 s  
+- **Shortest**: 11.2 min  
+- **Longest**: 21.9 min
+
+Using these stats, I ran a Monte Carlo simulation:
+
+![Figure 5. Probability of delay](visualization-5.png)
+
+---
 
 # Allikad
 Ühistranspordiregistri avaandmed
