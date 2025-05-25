@@ -1,4 +1,28 @@
-# RMK data team internship 2025
+# RMK Data Team Internship 2025
+
+Interaktiivsed graafikud on saadaval Streamliti rakenduses:  
+[Streamlit-rakendus](https://rmkdatateaminternship2025-idc2zimyqvkshe9jabymgf.streamlit.app)
+
+---
+
+## Lõpptulemus
+
+![Monte Carlo simulatsioon](visualization-5.png)  
+*Joonis. Rita hilinemise tõenäosus*
+
+---
+
+## Lühikokkuvõte
+
+1. Laadisin GTFS-andmed alla.  
+2. Otsisin välja õiged peatused
+3. Arvutasin reiside kestused erinevatel kellaaegadel
+4. Kraapisin endpointist andmeid busside tegelike saabumiste kohta kolmel päeval
+5. Tegelike andmete põhjal kogusin andmeid hilinemiste kohta, analüüsisin ja visualiseerisin hilinemiste dünaamikat
+6. Graafiku tegemine hilinemiste ning Monte Carlo simulatsiooni abil
+
+---
+
 Otsustasin esmalt laadida alla Eesti GTFS andmestiku ning seda uurida. Kavatsen esmalt teha lihtsama graafiku GTFS andmete põhjal. Andmestik on saadaval: "http://www.peatus.ee/gtfs/" ning juhend: "https://developers.google.com/transit/gtfs/reference/",
 
 
@@ -83,3 +107,6 @@ URL: https://developers.google.com/transit/gtfs/reference/
 
 Joonis 1. Kuvatõmmis portaalist transport.tallinn.ee
 URL: https://transport.tallinn.ee/#bus/8/a-b/00702-1
+
+Stellwall, Mats. Monte Carlo simulations with Streamlit. Streamlit Blog (Snowflake powered ❄️), 8. juuni 2023.
+URL: https://blog.streamlit.io/monte-carlo-simulations-with-streamlit/ 
