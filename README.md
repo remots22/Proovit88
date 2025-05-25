@@ -1,4 +1,4 @@
-# Proovit88
+# RMK data team internship 2025
 Otsustasin esmalt laadida alla Eesti GTFS andmestiku ning seda uurida. Kavatsen esmalt teha lihtsama graafiku GTFS andmete põhjal. Andmestik on saadaval: "http://www.peatus.ee/gtfs/" ning juhend: "https://developers.google.com/transit/gtfs/reference/",
 
 
@@ -55,6 +55,21 @@ routes.txt põhjal sõidavad Zoo ja Toompargi vahel järgmised liinid:
 | xxxx     | 56        | 8                | Väike-Õismäe - Äigrumäe      | 3          | de2c42      | Tallinna TA         |            |
 | xxxx     | 56        | 92               | ÖÖ Balti jaam - Väike-Õismäe | 3          | de2c42      | Tallinna TA         |            |
 
+Väljumiste hilinemised visualiseerisin graafikuga:
+![Joonis 2. Kuvatõmmis hilinemiste kohta (Zoo peatuses)](822.png)
+**Joonis 2.** Kuvatõmmis hilinemiste kohta (Zoo peatuses)
+![Joonis 3. Kuvatõmmis hilinemiste kohta (Toompargi peatuses)](1769.png)
+**Joonis 3.** Kuvatõmmis hilinemiste kohta (Toompargi peatuses)
+
+Seejärel visualiseerisin reiside kestused:
+![Joonis 4. Reiside tegelik kestus](visualization-6.png)
+**Joonis 4.** Reiside tegelik kestus
+
+Seejuures kestis keskmine reis 834 sekundit, standardhälve 153 sekundit, lühim reis 11,2 minutit, pikim reis 21,9 minutit.
+
+Arvestades reisi keskmist kestust ning standardhälvet, jooksutasin Monte Carlo simulatsiooni (vastus):
+![Joonis 5. Rita hilinemise tõenäosus](visualization-5.png)
+**Joonis 5.** Rita hilinemise tõenäosus
 
 
 # Allikad
