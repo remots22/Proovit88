@@ -55,11 +55,15 @@ Need ajad kattuvad aadressil transport.tallinn.ee saadaval oleva graafikuga:
 **Joonis 1.** Kuvatõmmis portaalist transport.tallinn.ee. Liini 8 (Zoo) sõiduplaan.
 
 Uurisin Postman rakenduse abil https://gis.ee/tallinn/ kaardirakendust - sealt on võimalik leida reaalajas andmeid Tallinna busside ja trammide kohta. 
-Leidsin endpointi kujul "https://transport.tallinn.ee/siri-stop-departures.php?stopid=xxxx", mille abil on võimalik requestida arvatavat saabumisaega ning tegelikku saabumisaega.
+Leidsin endpointi kujul:
+```
+https://transport.tallinn.ee/siri-stop-departures.php?stopid=xxxx
+```
+mille abil on võimalik requestida arvatavat saabumisaega ning tegelikku saabumisaega.
 
 
 Endpoint väljastab andmeid kujul:
-
+```
 Transport,RouteNum,ExpectedTimeInSeconds,ScheduleTimeInSeconds,65472,version20201024
 stop,822
 bus,25,65688,65484,Reisisadama D-terminal,216,Z
@@ -67,7 +71,7 @@ bus,8,65704,65694,Äigrumäe,232,Z
 bus,21,65776,65460,Balti jaam,304,Z
 bus,42,65818,65796,Priisle,346,Z
 bus,26,65900,65898,Paljassaare,428,Z
-
+```
 Kogusin andmeid kolme päeva väljumiste kohta - eelkõige kl 8 - kl 9 (hilinemised.py). Kogusin andmeid 15.05.2025, 16.05.2025 ja 19.05.2025 - neljapäev, reede, esmaspäev. Et andmeid hilinemise tõenäosuse arvutamiseks on liiga vähe (aega ülesande täitmiseks ka : D), otsustasin sel korral kasutada keskmise hilinemise arvutamiseks andmeid ka teiste liinide kohta, mis sõidavad sarnast teed pidi ning läbivad Zoo ja Toompark peatuseid.
 
 routes.txt põhjal sõidavad Zoo ja Toompargi vahel järgmised liinid:
