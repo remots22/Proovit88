@@ -1,7 +1,7 @@
 # RMK Data Team Internship 2025
 
 Interaktiivsed graafikud on saadaval Streamliti rakenduses:  
-[Streamlit-rakendus](https://rmkdatateaminternship2025-idc2zimyqvkshe9jabymgf.streamlit.app)
+[https://rmkdatateaminternship2025-idc2zimyqvkshe9jabymgf.streamlit.app](https://rmkdatateaminternship2025-idc2zimyqvkshe9jabymgf.streamlit.app)
 
 ---
 
